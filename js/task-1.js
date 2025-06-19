@@ -1,17 +1,14 @@
-function makeTransaction(quantity, pricePerDroid) {
+function makeTransaction(quantity, pricePerDroid, customerCredits) {
   const totalPrice = quantity * pricePerDroid;
-  return ` "You ordered ${quantity} droids worth ${totalPrice} credits!"`;
+
+  if (totalPrice > customerCredits) {
+    return 'Insufficient funds!';
+  } else {
+    return `You ordered ${quantity} droids worth ${totalPrice} credits!`;
+  }
 }
-console.log(makeTransaction(5, 3000));
-console.log(makeTransaction(3, 1000));
-console.log(makeTransaction(10, 500));
-
-//
-
-// function makeTransaction2(quantity2, pricePerDroid2) {
-//   const totalPrice2 = quantity2 * pricePerDroid2;
-//   return ` "Ви замовили ${quantity2} дронів), вартіть кожного ${pricePerDroid2}ойро, загальна вартість товарів у кошику ${totalPrice2} Листочків з дерева"`;
-// }
-// const userQuantity = Number(prompt("Ведіть кількість дронів"));
-// const userPrice = Number(prompt("Яка рартість драна вам підходить?"));
-// alert(makeTransaction2(userQuantity, userPrice));
+console.log(makeTransaction(5, 3000, 23000));
+console.log(makeTransaction(3, 1000, 15000));
+console.log(makeTransaction(10, 5000, 8000));
+console.log(makeTransaction(8, 2000, 10000));
+console.log(makeTransaction(10, 500, 5000));
